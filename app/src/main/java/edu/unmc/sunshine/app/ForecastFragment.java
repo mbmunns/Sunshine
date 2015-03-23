@@ -149,6 +149,14 @@ public class ForecastFragment extends Fragment {
             JSONObject forecastJson = new JSONObject(forecastJsonStr);
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
+
+            int cnt = forecastJson.getInt("cnt");
+            numDays = weatherArray.length();
+            //Log.v(LOG_TAG, "count is " + cnt );
+            //Log.v(LOG_TAG,"lenght = " + weatherArray.length());
+
+
+
             // OWM returns daily forecasts based upon the local time of the city that is being
             // asked for, which means that we need to know the GMT offset to translate this data
             // properly.
@@ -167,7 +175,8 @@ public class ForecastFragment extends Fragment {
             dayTime = new Time();
 
             String[] resultStrs = new String[numDays];
-            for(int i = 0; i < weatherArray.length(); i++) {
+            for(int i = 0; i < numDays; i++) {
+            //for(int i = 0; i < weatherArray.length(); i++) {
                 // For now, using the format "Day, description, hi/low"
                 String day;
                 String description;
@@ -198,9 +207,9 @@ public class ForecastFragment extends Fragment {
                 resultStrs[i] = day + " - " + description + " - " + highAndLow;
             }
 
-            //for (String s : resultStrs) {
-            //    Log.v(LOG_TAG, "Forecast entry: " + s);
-            //}
+            for (String s : resultStrs) {
+                Log.v(LOG_TAG, "Forecast entry: " + s);
+            }
             return resultStrs;
 
         }
@@ -245,7 +254,7 @@ public class ForecastFragment extends Fragment {
 
                 URL url = new URL(builtUri.toString());
 
-                //Log.v(LOG_TAG, "Built URI " + builtUri.toString());
+                Log.v(LOG_TAG, "Built URI " + builtUri.toString());
 
 
                 // Create the request to OpenWeatherMap, and open the connection
@@ -296,6 +305,7 @@ public class ForecastFragment extends Fragment {
             }
 
             try {
+                //Log.v(LOG_TAG, "getWeatherDataFromJson"+forecastJsonStr +"-"+ numDays);
                 return getWeatherDataFromJson(forecastJsonStr, numDays);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
