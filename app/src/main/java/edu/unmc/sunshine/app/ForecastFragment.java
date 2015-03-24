@@ -149,8 +149,8 @@ public class ForecastFragment extends Fragment {
                 high = (high * 1.8) + 32;
                 low = (low * 1.8) + 32;
             } else if (unitType.equals(getString(R.string.pref_units_kelvin))) {
-                high = high * 274.15;
-                low = low * 274.15;
+                high = high + 273.15;
+                low = low + 273.15;
             } else if (!unitType.equals(getString(R.string.pref_units_metric))) {
                 Log.d(LOG_TAG, "Unit type not found: " + unitType);
             }
