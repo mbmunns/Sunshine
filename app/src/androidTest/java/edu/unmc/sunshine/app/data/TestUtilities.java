@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.test.AndroidTestCase;
+import android.util.Log;
 
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,7 @@ public class TestUtilities extends AndroidTestCase {
         for (Map.Entry<String, Object> entry : valueSet) {
             String columnName = entry.getKey();
             int idx = valueCursor.getColumnIndex(columnName);
+            Log.v("Cusor", "Column name: " + columnName + " index of: " + idx);
             assertFalse("Column '" + columnName + "' not found. " + error, idx == -1);
             String expectedValue = entry.getValue().toString();
             assertEquals("Value '" + entry.getValue().toString() +

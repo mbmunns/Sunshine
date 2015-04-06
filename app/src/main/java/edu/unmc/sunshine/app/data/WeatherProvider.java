@@ -197,7 +197,7 @@ public class WeatherProvider extends ContentProvider {
             // "weather"
             case WEATHER: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
-                        WeatherContract.LocationEntry.TABLE_NAME,
+                        WeatherContract.WeatherEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
