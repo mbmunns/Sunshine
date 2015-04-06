@@ -184,6 +184,7 @@ public class TestProvider extends AndroidTestCase {
         WeatherDbHelper dbHelper = new WeatherDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        // Create a location
         ContentValues testValues = TestUtilities.createNorthPoleLocationValues();
         long locationRowId = TestUtilities.insertNorthPoleLocationValues(mContext);
 
@@ -202,6 +203,15 @@ public class TestProvider extends AndroidTestCase {
                 null,
                 null,
                 null
+
+//        Cursor weatherCursor = db.query(
+//                WeatherContract.WeatherEntry.TABLE_NAME,  // Table to Query
+//                null, // leaving "columns" null just returns all the columns.
+//                null, // cols for "where" clause
+//                null, // values for "where" clause
+//                null, // columns to group by
+//                null, // columns to filter by row groups
+//                null  // sort order
         );
 
         // Make sure we get the correct cursor out of the database
