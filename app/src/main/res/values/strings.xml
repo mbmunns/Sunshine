@@ -20,10 +20,7 @@
     <!-- Default postal code for location preference [CHAR LIMIT=NONE] -->
     <string name="pref_location_default" translatable="false">68112</string>
 
-
-
     <string name="pref_units_label">Temperature Units</string>
-
     <string name="pref_units_label_metric">Celsius</string>
     <string name="pref_units_label_imperial">Fahrenheit</string>
     <string name="pref_units_label_kelvin">Kelvin</string>
