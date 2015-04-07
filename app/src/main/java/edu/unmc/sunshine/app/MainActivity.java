@@ -104,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
                 ff.onLocationChanged();
             }
             mUnits = units;
+            Log.d(LOG_TAG, "Units are " + units);
         }
     }
 

@@ -30,6 +30,19 @@ public class Utility {
                 .equals(context.getString(R.string.pref_units_metric));
     }
 
+    static String formatTemperature(double temperature, Context context) {
+        double temp;
+        String unitType =  getPreferredUnits(context);
+        if ( unitType.equals(context.getString(R.string.pref_units_imperial))) {
+            temp = 9*temperature/5+32;
+        }else if (unitType.equals(context.getString(R.string.pref_units_kelvin))) {
+            temp = temperature + 273.15;
+        }  else {
+            temp = temperature;
+        }
+        return String.format("%.0f", temp);
+    }
+
     static String formatTemperature(double temperature, boolean isMetric) {
         double temp;
         if ( !isMetric ) {
